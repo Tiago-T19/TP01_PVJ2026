@@ -78,13 +78,13 @@ public class PlayerMovement : MonoBehaviour
     {
         doubleJumpActive = true;
         maxJumps = 2; // Doble salto
-        Debug.Log($"<color=cyan>Doble Salto </color><color=green>ACTIVADO</color>");
+        Debug.Log($"<color=red>Doble Salto </color><color=green>ACTIVADO</color>");
 
         yield return new WaitForSeconds(doubleJumpTime);
 
         doubleJumpActive = false;
         maxJumps = 1;
-        Debug.Log($"<color=cyan>Doble Salto </color><color=red>DESACTIVADO</color>");
+        Debug.Log($"<color=green>Doble Salto </color><color=red>DESACTIVADO</color>");
     }
 
     public void EnableDoubleJump()
