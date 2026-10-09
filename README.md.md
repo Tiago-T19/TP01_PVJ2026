@@ -33,7 +33,7 @@ El escenario cuenta con un generador de proyectiles (```BulletSpawner```) que ut
 El jugador puede recoger un objeto presionando E. Al recogerlo el jugador se emparenta mediante ```SetParent()``` permiento transportarlo durante el recorrido. Al llegar a la zona de entrega, el objeto deja de ser transportado por el jugador y pasa a formar parte de la zona de entrega
 
 - **PowerUp: Velocidad**
-Durante el recorrido se encuentra un PowerUp, un cubo rosa. Al tomarlo, el jugador obtiene un x5 en velocidad por un tiempo limitado. El efecto dura 5 segundo y se implementa mediante una corrutina ```Power Up de Velocidad```. Al finalizar el tiempo, vuelve a su estado original
+Durante el recorrido se encuentra un PowerUp, un cubo rosa. Al tomarlo, el jugador obtiene un x5 en velocidad por un tiempo limitado. El efecto dura 8 segundo y se implementa mediante una corrutina ```Power Up de Velocidad```. Al finalizar el tiempo, vuelve a su estado original
 
 - **Niveles**
 El juego esat dividido en dos niveles. En el primer nivel se debe superar plataformas. En el segundo nivel aumenta la dificultad teniendo que esquivar obstaculos despues de superar nuevas plataformas en las paredes y se agrega el objeto a entregar. Al cumplir el objetivo gana el juego
@@ -190,8 +190,8 @@ Funcionamiento: El Script maneja la activacion del PowerUp
 ```
 
 6. ### Entrega del objeto y evento de victoria
-Script principal: ```GoalZone.cs``` y ```WinBehavior.cs```
-Funcionamiento: El ```GoalZone.cs``` se utiliza para la entrega del objeto y activael camino a la meta. ```WinBehavior.cs``` cambia de color la plataforma y activa particulas.
+Script principal: ```GoalZone.cs``` y ```MetaBehavior.cs```
+Funcionamiento: El ```GoalZone.cs``` se utiliza para la entrega del objeto y activael camino a la meta. ```MetaBehavior.cs``` cambia de color la plataforma y activa particulas.
 
 ### GoalZone.cs
 ```csharp
@@ -227,7 +227,7 @@ Funcionamiento: El ```GoalZone.cs``` se utiliza para la entrega del objeto y act
 }
 ```
 
-### WinBehavior.cs
+### MetaBehavior.cs
 
 ```csharp
    private void OnTriggerEnter(Collider other)
@@ -236,7 +236,7 @@ Funcionamiento: El ```GoalZone.cs``` se utiliza para la entrega del objeto y act
     {
         Debug.Log("<color=greenYellow>GANASTE!!! Felicidades, lograste sobrevivir</color>");
         
-        GetComponent<Renderer>().material.color = Color.greenYellow; // Cambia el color a verde
+        GetComponent<Renderer>().material.color = Color.greenYellow; // Cambia el color a verde 
         Particle.Play();
     }
 }
@@ -245,18 +245,19 @@ ___
 
 ## 📸 Capturas de Pantalla
 ### Nivel 1
-![Inicio](Images/1.png)
-![Plataformas](Images/2.png)
+![Inicio](Imagenes/nivel1.png)
+![Plataformas](Imagenes/plataformaslv1.png)
 
 ### Nivel 2
-![Objeto a Recoger](Images/3.png)
-![Obstaculos](Images/4.png)
-![PoweUp](Images/5.png)
-![Entrega](Images/8.png)
+![Objeto a Recoger](Imagenes/objeto.png)
+![Plataformas](Imagenes/Plataformas2.png)
+![Obstaculos](Imagenes/Obstaculos.png)
+![PoweUp](Imagenes/PowerUp.png)
+![Entrega](Imagenes/Entrega.png)
 
 ### Victoria
-![Camino Final](Images/9.png)
-![Vistoria](Images/10.png)
+![Camino Final](Imagenes/caminoFinal.png)
+![Vistoria](Imagenes/victoria.png)
 
 ___
 
