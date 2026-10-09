@@ -8,11 +8,11 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private float interval; // Intervalo para el invokeRepeating
 
     [Header("Bala")]
-    [SerializeField] private GameObject bullet; // Bala Enemigo
+    [SerializeField] private GameObject bullet; // Bala del Enemigo
 
     private void Start()
     {
-        InvokeRepeating("ShootFast", initTime, interval); // Invoca la bala y simula disparo
+        InvokeRepeating("ShootFast", initTime, interval); // Invoca la bala y simula el disparo
     }
 
     public void ShootFast()

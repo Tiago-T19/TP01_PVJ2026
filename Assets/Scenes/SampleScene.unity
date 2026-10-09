@@ -4655,7 +4655,6 @@ GameObject:
   - component: {fileID: 1051103490}
   - component: {fileID: 1051103489}
   - component: {fileID: 1051103493}
-  - component: {fileID: 1051103494}
   m_Layer: 0
   m_Name: BasePlatform
   m_TagString: Ground
@@ -4779,22 +4778,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 1, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1051103494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1051103487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f10d2b6adf3e3ce4aa286a69a601b501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  level_1: {fileID: 1641741596}
-  level_2: {fileID: 350847328}
-  meta: {fileID: 1215319714}
-  level: 2
 --- !u!1 &1147013568
 GameObject:
   m_ObjectHideFlags: 0
@@ -5135,9 +5118,8 @@ GameObject:
   - component: {fileID: 1190757620}
   - component: {fileID: 1190757619}
   - component: {fileID: 1190757624}
-  - component: {fileID: 1190757626}
+  - component: {fileID: 1190757628}
   - component: {fileID: 1190757627}
-  - component: {fileID: 1190757629}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5266,7 +5248,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &1190757626
+--- !u!114 &1190757627
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5275,10 +5257,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1190757618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5a3bc33e912234395ee7967a58da90, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b36fcecc31ce1743b34a8e4e94cb472, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpawnPoint
---- !u!114 &1190757627
+  m_EditorClassIdentifier: Assembly-CSharp::PickItem
+  zone: {fileID: 389568218}
+  currentItem: {fileID: 0}
+--- !u!114 &1190757628
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5294,20 +5278,6 @@ MonoBehaviour:
   JumpForce: 6
   isGrounded: 0
   speedBoostDuration: 8
---- !u!114 &1190757629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1190757618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b36fcecc31ce1743b34a8e4e94cb472, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PickItem
-  zone: {fileID: 389568218}
-  currentItem: {fileID: 0}
 --- !u!1 &1215319714
 GameObject:
   m_ObjectHideFlags: 0
@@ -5457,7 +5427,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0bee11e68d5576345ac3b3a54d08800c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Victoria
+  m_EditorClassIdentifier: Assembly-CSharp::WinBehavior
   Particle: {fileID: 1872390193}
 --- !u!1 &1235281621
 GameObject:
@@ -13004,10 +12974,9 @@ GameObject:
   - component: {fileID: 1861845558}
   - component: {fileID: 1861845557}
   - component: {fileID: 1861845556}
-  - component: {fileID: 1861845560}
   - component: {fileID: 1861845561}
   m_Layer: 0
-  m_Name: Platform
+  m_Name: BasePlatform2
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13100,31 +13069,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1861845555}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.9, y: 7, z: 402.9}
-  m_LocalScale: {x: 1.9144611, y: 1, z: 0.82472956}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.9000025, y: 7, z: 402.9}
+  m_LocalScale: {x: 1.914461, y: 1, z: 0.82472956}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 425085850}
   - {fileID: 1755228355}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1861845560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861845555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f10d2b6adf3e3ce4aa286a69a601b501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  level_1: {fileID: 0}
-  level_2: {fileID: 0}
-  meta: {fileID: 0}
-  level: 0
 --- !u!65 &1861845561
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17976,7 +17929,7 @@ Transform:
   m_GameObject: {fileID: 1872390192}
   serializedVersion: 2
   m_LocalRotation: {x: 0.72098404, y: -0.000000059604638, z: -0.009144216, w: 0.6928914}
-  m_LocalPosition: {x: 3.45, y: 23.6, z: 0.05}
+  m_LocalPosition: {x: 3.45, y: 16.3, z: 0.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18485,7 +18438,6 @@ GameObject:
   - component: {fileID: 2116716128}
   - component: {fileID: 2116716127}
   - component: {fileID: 2116716131}
-  - component: {fileID: 2116716132}
   m_Layer: 0
   m_Name: Start
   m_TagString: Ground
@@ -18608,22 +18560,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10, y: 0, z: 12}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2116716132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2116716126}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d633e0fdffe5da41bd8b401a4b9d1bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerRespawn
-  spawnPoint: {fileID: 0}
-  nivelActual: 1
-  nivel1: {fileID: 0}
-  nivel2: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

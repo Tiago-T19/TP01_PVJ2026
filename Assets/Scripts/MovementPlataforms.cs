@@ -31,7 +31,7 @@ public class MovingPlatform : MonoBehaviour
         {
             transform.position = currentTarget;
             waiting = true;
-            Invoke("ChangeDirection", waitTime); // Espera para volver al objetivo
+            Invoke("ChangeDirection", waitTime); // Espera para volver 
         }
         // Calcula la direccion de la plataforma al objetivo y lo mueve hacia el objetivo
         dir = (currentTarget - transform.position).normalized;

@@ -2,7 +2,7 @@ using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 using static UnityEngine.ParticleSystem;
 
-public class WinBehavior : MonoBehaviour
+public class MetaBehavior : MonoBehaviour
 {
     // Script de victoria
     [SerializeField] private ParticleSystem Particle;
