@@ -33,9 +33,9 @@ public class MovingPlatform : MonoBehaviour
             waiting = true;
             Invoke("ChangeDirection", waitTime); // Espera para volver al objetivo
         }
-
-        dir = (currentTarget - transform.position).normalized; // Calcula la direccion de la plataforma al objetivo
-        transform.position += dir * speed * Time.deltaTime; // Mueve la plataforma
+        // Calcula la direccion de la plataforma al objetivo y lo mueve hacia el objetivo
+        dir = (currentTarget - transform.position).normalized;
+        transform.position += dir * speed * Time.deltaTime;
     }
 
     private void OnTriggerStay(Collider other) // Mientras algo este dentro del Trigger
@@ -45,7 +45,7 @@ public class MovingPlatform : MonoBehaviour
             PlayerMovement player = other.GetComponent<PlayerMovement>();
             if (player != null)
             {
-                gameObject.GetComponent<Renderer>().material.color = Color.green;
+               
                 player.ExternalMoveSpeed = dir * speed; // Suma la velocidad externa
             }
         }
@@ -58,7 +58,7 @@ public class MovingPlatform : MonoBehaviour
             PlayerMovement player = other.GetComponent<PlayerMovement>();
             if (player != null)
             {
-                gameObject.GetComponent<Renderer>().material.color = Color.darkRed;
+               
                 player.ExternalMoveSpeed = Vector3.zero; // Velocidad externa 0
             }
         }

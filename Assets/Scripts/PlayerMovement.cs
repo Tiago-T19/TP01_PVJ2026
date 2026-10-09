@@ -6,26 +6,20 @@ using UnityEngine.Rendering;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movimiento")]
-    // Velocidad al caminar
     [SerializeField] private float walkSpeed;
 
-    // Direccion. Comienza en 0
     private Vector3 dir = Vector3.zero;
 
-    // Velocidad externa
     private Vector3 externalMoveSpeed;
 
-    // Fuerza de salto
     [Header("Salto")]
-    [SerializeField] private float JumpForce; 
-    private Rigidbody rb; // Rigidbody
-    [SerializeField] private bool isGrounded = false; // Esta en el suelo
+    [SerializeField] private float JumpForce;
+    private Rigidbody rb;
+    [SerializeField] private bool isGrounded = false;
 
-    [Header("Doble Salto")]
-    [SerializeField] private int maxJumps = 1; // Maximo de saltos
-    private float doubleJumpTime = 15f; // Tiempo de PowerUp
-    private int jumpCount = 0; // Contador de saltos
-    private bool doubleJumpActive = false; // PowerUp Activo
+    [Header("Power Up Velocidad")]
+    [SerializeField] private float speedBoostDuration = 8f;
+    private bool speedBoostActive = false;
 
     void Start()
     {
@@ -34,39 +28,35 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // MOVIMIENTO 
-        // Entradas W, A, S, D
+        // MOVIMIENTO
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        // Direccion
         dir = new Vector3(h, 0f, v);
 
-        Vector3 mover = dir.normalized * walkSpeed * Time.deltaTime + externalMoveSpeed * Time.deltaTime;
+        Vector3 mover = dir.normalized * walkSpeed * Time.deltaTime
+                      + externalMoveSpeed * Time.deltaTime;
 
-        transform.Translate(mover, Space.Self); // Se mueve en el eje local (Space.Self)
+        transform.Translate(mover, Space.Self);
 
-        // SALTO "Espacio"
-        if (Input.GetKeyDown(KeyCode.Space) && jumpCount < maxJumps)
+        // SALTO
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.AddForce(Vector3.up * JumpForce, ForceMode.Impulse);
-            jumpCount++;
         }
 
-        Debug.Log($"H:{h} V:{v} JumpCount: {jumpCount}");
+        Debug.Log($"H:{h} V:{v}");
     }
 
-
-    private void OnCollisionEnter(Collision collision) // Detecta el suelo
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
-            jumpCount = 0;
         }
     }
 
-    private void OnCollisionExit(Collision collision) // Detecta el suelo
+    private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
@@ -74,26 +64,41 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator DoubleJump()
+    // ==========================
+    // POWER UP DE VELOCIDAD
+    // ==========================
+
+    public void EnableSpeedBoost(float extraSpeed)
     {
-        doubleJumpActive = true;
-        maxJumps = 2; // Doble salto
-        Debug.Log($"<color=red>Doble Salto </color><color=green>ACTIVADO</color>");
-
-        yield return new WaitForSeconds(doubleJumpTime);
-
-        doubleJumpActive = false;
-        maxJumps = 1;
-        Debug.Log($"<color=green>Doble Salto </color><color=red>DESACTIVADO</color>");
-    }
-
-    public void EnableDoubleJump()
-    {
-        if (!doubleJumpActive)
+        if (!speedBoostActive)
         {
-            StartCoroutine(DoubleJump()); // Ativa corrutina
+            StartCoroutine(SpeedBoost(extraSpeed));
         }
     }
 
-    public Vector3 ExternalMoveSpeed { get => externalMoveSpeed; set => externalMoveSpeed = value; }
+    private IEnumerator SpeedBoost(float extraSpeed)
+    {
+        speedBoostActive = true;
+
+        walkSpeed += extraSpeed;
+
+        Debug.Log("<color=green>VELOCIDAD AUMENTADA</color>");
+
+        yield return new WaitForSeconds(speedBoostDuration);
+
+        walkSpeed -= extraSpeed;
+
+        speedBoostActive = false;
+
+        Debug.Log("<color=red>VELOCIDAD NORMAL RESTAURADA</color>");
+    }
+
+    public Vector3 ExternalMoveSpeed
+    {
+        get => externalMoveSpeed;
+        set => externalMoveSpeed = value;
+    }
 }
+
+
+

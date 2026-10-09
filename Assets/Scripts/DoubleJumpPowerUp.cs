@@ -1,16 +1,21 @@
 using UnityEngine;
 
-public class DoubleJumpPowerUp : MonoBehaviour
+public class SpeedPowerUp : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float extraSpeed = 5f;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            PlayerMovement player = other.GetComponent<PlayerMovement>();
+
+            if (player != null)
+            {
+                player.EnableSpeedBoost(extraSpeed);
+            }
+
+            Destroy(gameObject);
+        }
     }
 }
